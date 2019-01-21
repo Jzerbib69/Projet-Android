@@ -2,7 +2,7 @@
  
  The	first	version	of	this	application	will	be	composed	of	several	functionalities	listed	below:	
  
-	- Register		
+  - Register		
   - Login/out	
   - Share	a	todolist	with	an	another	user	
   - Modify	a	todolist	
