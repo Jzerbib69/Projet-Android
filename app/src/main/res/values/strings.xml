@@ -6,7 +6,6 @@
     <string name="LastName">Last Name</string>
     <string name="Password">Password</string>
     <string name="Email">Email</string>
-    <string name="VerifPassword">Password Confirmation</string>
 
     <string name="Bienvenue">Bienvenue sur MyTodoApp !</string>
     <string name="Info">Vous pourrez poursuivre après vous êtes inscrit ou connecté !</string>
