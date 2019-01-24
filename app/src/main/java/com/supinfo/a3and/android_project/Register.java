@@ -16,23 +16,30 @@ public class Register extends AppCompatActivity{
 
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btnCancel:
-                EditText UsernameText = findViewById(R.id.edtUsername);
-                EditText FirstNameText = findViewById(R.id.edtFirstName);
-                EditText LastNameText = findViewById(R.id.edtLastName);
-                EditText EmailText = findViewById(R.id.edtEmail);
-                EditText PasswordText = findViewById(R.id.edtPassword);
-                EditText VerifPasswordText = findViewById(R.id.edtConfirmPassword);
-                UsernameText.setText("");
-                FirstNameText.setText("");
-                LastNameText.setText("");
-                EmailText.setText("");
-                PasswordText.setText("");
-                VerifPasswordText.setText("");
+            case R.id.btnErased:
+                Erased();
             case R.id.btnRegister:
-                /*
-                */
+                Register();
         }
+    }
+
+    public void Erased(){
+        EditText UsernameText = findViewById(R.id.edtUsername);
+        EditText FirstNameText = findViewById(R.id.edtFirstName);
+        EditText LastNameText = findViewById(R.id.edtLastName);
+        EditText EmailText = findViewById(R.id.edtEmail);
+        EditText PasswordText = findViewById(R.id.edtPassword);
+        EditText VerifPasswordText = findViewById(R.id.edtConfirmPassword);
+        UsernameText.setText("");
+        FirstNameText.setText("");
+        LastNameText.setText("");
+        EmailText.setText("");
+        PasswordText.setText("");
+        VerifPasswordText.setText("");
+    }
+
+    public void Register(){
+        
     }
 
 }
