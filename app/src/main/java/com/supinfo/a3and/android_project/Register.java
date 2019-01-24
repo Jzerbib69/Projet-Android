@@ -15,7 +15,7 @@ public class Register extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
     }
-    
+
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnErased:
