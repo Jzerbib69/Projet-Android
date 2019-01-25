@@ -91,8 +91,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="45dp"
+<<<<<<< HEAD
+                android:text="@string/Cancel"
+                android:onClick="onClick"
+=======
                 android:onClick="onClick"
                 android:text="@string/Erase"
+>>>>>>> master
                 tools:layout_editor_absoluteX="218dp"
                 tools:layout_editor_absoluteY="123dp" />
 
