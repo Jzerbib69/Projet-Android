@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">MyTodoApp</string>
+
+    <string name="Username">Username</string>
+    <string name="FirstName">FirstName</string>
+    <string name="LastName">Last Name</string>
+    <string name="Password">Password</string>
+    <string name="Email">Email</string>
+
+    <string name="Bienvenue">Bienvenue sur MyTodoApp !</string>
+    <string name="Info">Vous pourrez poursuivre après vous êtes inscrit ou connecté !</string>
+
+    <string name="Register">Register</string>
+    <string name="Erase">Erase</string>
+    <string name="Login">Login</string>
 </resources>
