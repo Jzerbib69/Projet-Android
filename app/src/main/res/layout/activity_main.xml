@@ -67,7 +67,7 @@
                 tools:layout_editor_absoluteY="83dp" />
 
             <EditText
-                android:id="@+id/edtMDP"
+                android:id="@+id/edtPassword"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
