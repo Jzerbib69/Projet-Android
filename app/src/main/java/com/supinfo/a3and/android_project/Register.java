@@ -60,7 +60,8 @@ public class Register extends AppCompatActivity{
             Toast.makeText(this, "Vous devez renseigner tous les champs !", Toast.LENGTH_SHORT).show();
         }
         else {
-            String test = Api.register();
+            Api api = new Api();
+            api.register();
             Toast.makeText(this, "Inscription réussie", Toast.LENGTH_SHORT).show();
         }
     }
