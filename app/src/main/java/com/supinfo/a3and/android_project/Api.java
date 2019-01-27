@@ -1,5 +1,6 @@
 package com.supinfo.a3and.android_project;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.EditText;
@@ -28,11 +29,12 @@ public class Api extends AppCompatActivity {
     }
 
     public String register(){
+        Log.d("msg","test");
 
         try {
             //http://supinfo.steve-colinet.fr/suptodo/?action=register&username=teszzt12&password=test12&firstname=test12&lastname=test12&email=test12
 
-            URL url = new URL("supinfo.steve-colinet.fr/suptodo?action=register&username="+usernameText+"&password="+passwordText+"firstname="+firstNameText+"&lastname="+lastNameText+"&email="+emailText);
+            URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=register&username="+"bonjour124"+"&password="+"bonjour124"+"&firstname="+"bonjour124"+"&lastname="+"bonjour124"+"&email="+"bonjour124");
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             try {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
