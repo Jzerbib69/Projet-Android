@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 getDataLogin();
-                //initialiseDataLogin();
-                /*Api api = new Api();
-                api.login(dataUsernameLogin, dataPasswordLogin);*/
+                initialiseDataLogin();
+                Api api = new Api();
+                api.login(dataUsernameLogin, dataPasswordLogin);
                 LinearLayout layoutParent = findViewById(R.id.linearLayoutParent);
                 layoutParent.setVisibility(LinearLayout.GONE);
                 ListView listViewTODO = findViewById(R.id.ltvTodoList);
@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
     public void initialiseDataLogin(){
         dataUsernameLogin = usernameLogin.getText().toString();
         dataPasswordLogin = passwordLogin.getText().toString();
-        Log.e("test", dataPasswordLogin);
     }
 
     /*public void NavigationDisplay (View view){

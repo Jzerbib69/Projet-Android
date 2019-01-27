@@ -28,11 +28,11 @@ public class Register extends AppCompatActivity{
     }
 
     public void getData(){
-        usernameText = findViewById(R.id.edtUsername);
+        usernameText = findViewById(R.id.edtUsernameRegister);
         firstNameText = findViewById(R.id.edtFirstName);
         lastNameText = findViewById(R.id.edtLastName);
         emailText = findViewById(R.id.edtEmail);
-        passwordText = findViewById(R.id.edtPassword);
+        passwordText = findViewById(R.id.edtPasswordRegister);
     }
 
     public void initialiseData(){
