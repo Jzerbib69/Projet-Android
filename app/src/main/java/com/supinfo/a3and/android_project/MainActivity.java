@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
                 initialiseDataLogin();
                 Api api = new Api();
                 api.login(dataUsernameLogin, dataPasswordLogin);
-                if
                 LinearLayout layoutParent = findViewById(R.id.linearLayoutParent);
                 layoutParent.setVisibility(LinearLayout.GONE);
                 ListView listViewTODO = findViewById(R.id.ltvTodoList);
