@@ -15,7 +15,6 @@ public class Api extends AppCompatActivity{
 
             @Override
             public void run() {
-
                 try {
                     URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=register&username=" + username + "&password=" + password + "&firstname=" + firstName + "&lastname=" + lastName + "&email=" + email);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -27,8 +26,8 @@ public class Api extends AppCompatActivity{
                             stringBuilder.append(line).append("\n");
                         }
                         bufferedReader.close();
-                        Log.e("string", stringBuilder.toString());
-                        //return stringBuilder.toString();
+                        //Log.e("string", stringBuilder.toString());
+
                     } finally {
                         urlConnection.disconnect();
                     }
