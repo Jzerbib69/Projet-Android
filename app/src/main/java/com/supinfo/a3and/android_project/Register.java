@@ -61,8 +61,8 @@ public class Register extends AppCompatActivity{
         }
         else {
             Api api = new Api();
-            api.register();
-            Toast.makeText(this, "Inscription réussie", Toast.LENGTH_SHORT).show();
+            api.register(dataUsername, dataPassword, dataFirstName, dataLastName, dataEmail);
+            //Toast.makeText(this, "Inscription réussie", Toast.LENGTH_SHORT).show();
         }
     }
 

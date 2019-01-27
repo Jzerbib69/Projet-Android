@@ -3,7 +3,6 @@ package com.supinfo.a3and.android_project;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.EditText;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -11,30 +10,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Api extends AppCompatActivity {
-    String username;
-    String password;
-    String firstName;
-    String lastName;
-    String email;
 
-    EditText usernameText, firstNameText, lastNameText,emailText, passwordText;
-
-
-    public void getData(){
-        usernameText = findViewById(R.id.edtUsername);
-        firstNameText = findViewById(R.id.edtFirstName);
-        lastNameText = findViewById(R.id.edtLastName);
-        emailText = findViewById(R.id.edtEmail);
-        passwordText = findViewById(R.id.edtPassword);
-    }
-
-    public String register(){
-        Log.d("msg","test");
+    public String register(String username, String password, String firstName, String lastName, String email){
 
         try {
             //http://supinfo.steve-colinet.fr/suptodo/?action=register&username=teszzt12&password=test12&firstname=test12&lastname=test12&email=test12
 
-            URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=register&username="+"bonjour124"+"&password="+"bonjour124"+"&firstname="+"bonjour124"+"&lastname="+"bonjour124"+"&email="+"bonjour124");
+            URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=register&username="+username+"&password="+password+"&firstname="+firstName+"&lastname="+lastName+"&email="+email);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             try {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
