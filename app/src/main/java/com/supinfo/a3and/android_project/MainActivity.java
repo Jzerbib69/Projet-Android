@@ -3,6 +3,7 @@ package com.supinfo.a3and.android_project;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 getDataLogin();
-                initialiseDataLogin();
-                Api api = new Api();
-                api.login(dataUsernameLogin, dataPasswordLogin);
+                //initialiseDataLogin();
+                /*Api api = new Api();
+                api.login(dataUsernameLogin, dataPasswordLogin);*/
                 LinearLayout layoutParent = findViewById(R.id.linearLayoutParent);
                 layoutParent.setVisibility(LinearLayout.GONE);
                 ListView listViewTODO = findViewById(R.id.ltvTodoList);
@@ -53,19 +54,8 @@ public class MainActivity extends AppCompatActivity {
     public void initialiseDataLogin(){
         dataUsernameLogin = usernameLogin.getText().toString();
         dataPasswordLogin = passwordLogin.getText().toString();
+        Log.e("test", dataPasswordLogin);
     }
-
-    /*public void onClickButton(View v) {
-        switch (v.getId()){
-            case R.id.btnRegister:
-                startActivity(new Intent(this, Register.class));
-                break;
-            case R.id.btnLogin:
-                LinearLayout layoutParent = (LinearLayout)this.findViewById(R.id.linearLayout);
-                layoutParent.setVisibility(LinearLayout.INVISIBLE);
-                Toast.makeText(this, "A cacher !", Toast.LENGTH_SHORT).show();
-        }
-    }*/
 
     /*public void NavigationDisplay (View view){
         startActivity(new Intent(this, Display.class));
