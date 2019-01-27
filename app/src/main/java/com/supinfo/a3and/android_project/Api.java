@@ -1,5 +1,6 @@
 package com.supinfo.a3and.android_project;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
