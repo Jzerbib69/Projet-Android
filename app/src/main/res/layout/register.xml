@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#094D83"
+    android:background="@drawable/background_blue1"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,27 +11,20 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="420dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="96dp"
-            android:layout_width="280dp"
-            android:layout_height="320dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/border"
-            android:orientation="vertical">
-
             <EditText
                 android:id="@+id/edtUsernameRegister"
-                android:layout_width="200dp"
+                android:background="@drawable/custom_edittext_bg"
+                android:drawableLeft="@drawable/ic_username"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:autofillHints="@string/Username"
                 android:hint="@string/Username"
@@ -39,9 +32,11 @@
 
             <EditText
                 android:id="@+id/edtFirstName"
-                android:layout_width="200dp"
+                android:background="@drawable/custom_edittext_bg"
+                android:drawableLeft="@drawable/ic_username"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_gravity="center"
                 android:autofillHints="@string/FirstName"
                 android:hint="@string/FirstName"
@@ -49,9 +44,11 @@
 
             <EditText
                 android:id="@+id/edtLastName"
-                android:layout_width="200dp"
+                android:background="@drawable/custom_edittext_bg"
+                android:drawableLeft="@drawable/ic_username"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_gravity="center"
                 android:autofillHints="@string/LastName"
                 android:hint="@string/LastName"
@@ -59,9 +56,11 @@
 
             <EditText
                 android:id="@+id/edtEmail"
-                android:layout_width="200dp"
+                android:background="@drawable/custom_edittext_bg"
+                android:drawableLeft="@drawable/ic_email"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_gravity="center"
                 android:autofillHints="@string/Email"
                 android:hint="@string/Email"
@@ -69,46 +68,38 @@
 
             <EditText
                 android:id="@+id/edtPasswordRegister"
-                android:layout_width="200dp"
+                android:background="@drawable/custom_edittext_bg"
+                android:drawableLeft="@drawable/ic_password"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_gravity="center"
                 android:autofillHints="@string/Password"
                 android:hint="@string/Password"
                 android:inputType="textPassword" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="280dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnErased"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="45dp"
-
-                android:onClick="onClick"
-                android:text="@string/Erase"
-                tools:layout_editor_absoluteX="218dp"
-                tools:layout_editor_absoluteY="123dp" />
-
             <Button
                 android:id="@+id/btnRegister"
-                android:layout_width="wrap_content"
+                android:layout_width="350dp"
+                android:layout_marginTop="15dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="10dp"
                 android:text="@string/Register"
                 android:onClick="onClick"
                 tools:layout_editor_absoluteX="100dp"
                 tools:layout_editor_absoluteY="300dp" />
 
-        </LinearLayout>
+            <Button
+                android:id="@+id/btnErased"
+                android:layout_width="350dp"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="onClick"
+                android:text="@string/Erase"
+                tools:layout_editor_absoluteX="218dp"
+                tools:layout_editor_absoluteY="123dp" />
+
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
