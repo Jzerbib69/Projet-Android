@@ -1,6 +1,5 @@
 package com.supinfo.a3and.android_project;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -68,11 +67,7 @@ public class Register extends AppCompatActivity{
             intent.putExtra("username", dataUsername);
             intent.putExtra("password", dataPassword);
             startActivity(intent);
+            Toast.makeText(this, "Vous êtes maintenant connecté", Toast.LENGTH_SHORT).show();
         }
     }
-
-    public Context getContext(){
-        return this;
-    }
-
 }
