@@ -29,7 +29,6 @@ public class DisplayAllTodoList extends AppCompatActivity {
         final Button buttonLogout = findViewById(R.id.btnLogout);
         buttonLogout.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Api api = new Api();
                 api.logout();
                 try {
                     Thread.sleep(500);
@@ -57,8 +56,8 @@ public class DisplayAllTodoList extends AppCompatActivity {
             JSONArray jsonArray = new JSONArray(api.todo);
             try {
                 for (int i = 0; i < jsonArray.length(); i++) {
+                    Log.e("jsonarray: ", "nombre"+jsonArray.length());
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -67,8 +66,6 @@ public class DisplayAllTodoList extends AppCompatActivity {
 
             todoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                    Log.e("string", Long.toString(id));
-                    Log.e("string", Integer.toString(position));
                     Intent intent = new Intent(v.getContext(), DisplayOneTodo.class);
                     intent.putExtra("username", username);
                     intent.putExtra("password", password);

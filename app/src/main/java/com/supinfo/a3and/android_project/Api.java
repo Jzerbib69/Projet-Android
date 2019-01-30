@@ -12,12 +12,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Api extends AppCompatActivity {
 
     boolean state = false;
-    List todo = new ArrayList();
+    ArrayList<String> todo = new ArrayList<>();
+    JSONObject jsonObject;
 
     public void register(final String username, final String password, final String firstName, final String lastName, final String email, Context context){
         //this.contextReference = new WeakReference<Context>(context);
@@ -140,41 +140,19 @@ public class Api extends AppCompatActivity {
                     try {
                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
                         StringBuilder stringBuilder = new StringBuilder();
-                        //StringBuilder stringBuilder2 = new StringBuilder();
                         String line;
                         while ((line = bufferedReader.readLine()) != null) {
                             stringBuilder.append(line).append("\n");
                         }
                         bufferedReader.close();
-                        Log.e("string", stringBuilder.toString());
-                        todo.add(stringBuilder);
-                            /*JSONArray jsonArray = new JSONArray(stringBuilder.toString());
-                            Log.e("string",
-                                    "Number of entries " + jsonArray.length());
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                Log.e("string", jsonObject.getString("todo"));
-                                Log.e("string", jsonObject.getString("id"));
-                            }*/
-
-
-
-                            /*for(int i=0; i<stringBuilder.length();i++){
-                                if(stringBuilder.charAt(i) == 't' && stringBuilder.charAt(i+1) == 'o' && stringBuilder.charAt(i+2) == 'd' && stringBuilder.charAt(i+3) == 'o'){
-                                    for(int j = i+7; j<stringBuilder.length();j++){
-                                        if(stringBuilder.charAt(j) == '"'){
-                                            Log.e("string",stringBuilder2.toString());
-                                            todo.add('"');
-                                            todo.add(stringBuilder2.toString());
-                                            todo.add("\", ");
-                                        }
-                                        stringBuilder2.append(stringBuilder.charAt(j));
-                                    }
-                                    stringBuilder2.deleteCharAt(stringBuilder2.length());
-                                    stringBuilder2.deleteCharAt(stringBuilder2.length()-1);
-                                }
-                            }*/
-
+                        todo.add(stringBuilder.toString());
+                        JSONArray jsonArray = new JSONArray(stringBuilder.toString());
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            jsonObject = jsonArray.getJSONObject(i);
+                            Log.e("string", jsonObject.getString("id"));
+                            Log.e("string", jsonObject.getString("userinvited"));
+                            Log.e("string", jsonObject.getString("todo"));
+                        }
                         if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
                             Log.e("Erreur ", "Une erreur est survenue sur la TodoList");
                         }
@@ -228,7 +206,6 @@ public class Api extends AppCompatActivity {
         thread.start();
     }
 
-
     public void read(final String username, final String password, final int idList){
         Thread thread = new Thread(new Runnable() {
 
@@ -271,8 +248,6 @@ public class Api extends AppCompatActivity {
         thread.start();
     }
 
-<<<<<<< Updated upstream
-=======
     public void updateTodoList(final String username, final String password, final Integer id, final String text){
         Thread thread = new Thread(new Runnable() {
 
@@ -307,7 +282,6 @@ public class Api extends AppCompatActivity {
         });
         thread.start();
     }
->>>>>>> Stashed changes
 
     public void isConnected(Boolean state){
         if(state){
@@ -316,10 +290,28 @@ public class Api extends AppCompatActivity {
         else{
             this.state=false;
         }
-        Log.e("string", String.valueOf(this.state));
     }
 
     public boolean isConnected(){
         return this.state;
     }
 }
+
+
+//test for nathan
+//StringBuilder stringBuilder2 = new StringBuilder();
+  /*for(int i=0; i<stringBuilder.length();i++){
+                                if(stringBuilder.charAt(i) == 't' && stringBuilder.charAt(i+1) == 'o' && stringBuilder.charAt(i+2) == 'd' && stringBuilder.charAt(i+3) == 'o'){
+                                    for(int j = i+7; j<stringBuilder.length();j++){
+                                        if(stringBuilder.charAt(j) == '"'){
+                                            Log.e("string",stringBuilder2.toString());
+                                            todo.add('"');
+                                            todo.add(stringBuilder2.toString());
+                                            todo.add("\", ");
+                                        }
+                                        stringBuilder2.append(stringBuilder.charAt(j));
+                                    }
+                                    stringBuilder2.deleteCharAt(stringBuilder2.length());
+                                    stringBuilder2.deleteCharAt(stringBuilder2.length()-1);
+                                }
+                            }*/

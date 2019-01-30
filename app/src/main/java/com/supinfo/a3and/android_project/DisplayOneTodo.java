@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +21,7 @@ public class DisplayOneTodo extends AppCompatActivity {
         setContentView(R.layout.onetodo);
 
         LayoutInflater factory = LayoutInflater.from(DisplayOneTodo.this);
-        final View alertDialogView = factory.inflate(R.layout., null);
+        //final View alertDialogView = factory.inflate(R.layout., null);
 
         final Button buttonShare = findViewById(R.id.btnShare);
         buttonShare.setOnClickListener(new View.OnClickListener(){
@@ -58,25 +57,12 @@ public class DisplayOneTodo extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null) {
-            if (intent.hasExtra("username") && intent.hasExtra("password")) {
+            if (intent.hasExtra("username") && intent.hasExtra("password") && intent.hasExtra("id")) {
                 usernameLast = intent.getStringExtra("username");
                 passwordLast = intent.getStringExtra("password");
-<<<<<<< Updated upstream
-                //id = intent.getIntExtra("id");
-=======
                 id = intent.getIntExtra("id", 0);
->>>>>>> Stashed changes
-                Log.e("username Last ", usernameLast);
-                Log.e("password Last ", passwordLast);
-                Log.d("password Last ", "id est :"+id);
             }
-<<<<<<< Updated upstream
-            Api api = new Api();
             api.read(usernameLast, passwordLast, id);
-=======
-
-            api.readListTodo(usernameLast, passwordLast, id);
->>>>>>> Stashed changes
         }
 
         final Button buttonUpdate = findViewById(R.id.btnModify);
