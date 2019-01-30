@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DisplayAllTodoList extends AppCompatActivity {
 
@@ -23,7 +24,15 @@ public class DisplayAllTodoList extends AppCompatActivity {
             public void onClick(View v){
                 Api api = new Api();
                 api.logout();
-                finish();
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (String.valueOf(api.isConnected()).equals("true")) {
+                    showToast();
+                    finish();
+                }
             }
         });
 
@@ -48,5 +57,9 @@ public class DisplayAllTodoList extends AppCompatActivity {
         /*final ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
                 android.R.layout.simple_list_item_1, prenoms);
         mListView.setAdapter(adapter);*/
+    }
+
+    public void showToast(){
+        Toast.makeText(this, "Vous êtes maintenant déconnecté", Toast.LENGTH_SHORT).show();
     }
 }
