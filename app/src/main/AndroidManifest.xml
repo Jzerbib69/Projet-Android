@@ -19,15 +19,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register"
-        android:label="Register"
         android:parentActivityName=".MainActivity">
         <meta-data
             android:name="android.support.PARENT_Activity"
             android:value=".MainActivity" />
-    </activity>
-        <activity android:name=".DisplayAllTodoList"
-            android:label="MyTodoList"
-            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".DisplayAllTodoList">
+        </activity>
+        <activity android:name=".DisplayOneTodo">
         </activity>
     </application>
 
