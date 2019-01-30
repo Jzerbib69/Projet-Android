@@ -10,6 +10,7 @@ import android.widget.Button;
 public class DisplayOneTodo extends AppCompatActivity {
 
     String usernameLast,passwordLast;
+    Integer id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +32,12 @@ public class DisplayOneTodo extends AppCompatActivity {
             if (intent.hasExtra("username") && intent.hasExtra("password")) {
                 usernameLast = intent.getStringExtra("username");
                 passwordLast = intent.getStringExtra("password");
-                Log.e("username Last : ", usernameLast);
-                Log.e("password Last : ", passwordLast);
+                id = intent.getIntExtra("id");
+                Log.e("username Last ", usernameLast);
+                Log.e("password Last ", passwordLast);
             }
+            Api api = new Api();
+            api.readListTodo(usernameLast, passwordLast, id);
         }
     }
 }
