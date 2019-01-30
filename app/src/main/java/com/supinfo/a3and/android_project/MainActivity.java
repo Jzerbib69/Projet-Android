@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         final Button buttonLogin = findViewById(R.id.btnLogin);
         buttonRegister.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                onPause();
                 NavigationRegister(v);
             }
         });
@@ -30,15 +31,13 @@ public class MainActivity extends AppCompatActivity {
                 getDataLogin();
                 initialiseDataLogin();
                 Api api = new Api();
-                api.login(dataUsernameLogin, dataPasswordLogin);
+                //api.login(dataUsernameLogin, dataPasswordLogin);
                 LinearLayout layoutParent = findViewById(R.id.linearLayoutParent);
                 layoutParent.setVisibility(LinearLayout.GONE);
                 ListView listViewTODO = findViewById(R.id.ltvTodoList);
                 listViewTODO.setVisibility(ListView.VISIBLE);
             }
         });
-
-
     }
 
     public void NavigationRegister (View view){
