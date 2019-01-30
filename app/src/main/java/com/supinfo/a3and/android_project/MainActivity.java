@@ -31,11 +31,14 @@ public class MainActivity extends AppCompatActivity {
                 getDataLogin();
                 initialiseDataLogin();
                 Api api = new Api();
-                //api.login(dataUsernameLogin, dataPasswordLogin);
-                LinearLayout layoutParent = findViewById(R.id.linearLayoutParent);
-                layoutParent.setVisibility(LinearLayout.GONE);
-                ListView listViewTODO = findViewById(R.id.ltvTodoList);
-                listViewTODO.setVisibility(ListView.VISIBLE);
+                //Register register = new Register();
+                api.login(dataUsernameLogin, dataPasswordLogin);
+                //if(api.isConnected()) {
+                    LinearLayout layoutParent = findViewById(R.id.linearLayoutParent);
+                    layoutParent.setVisibility(LinearLayout.GONE);
+                    ListView listViewTODO = findViewById(R.id.ltvTodoList);
+                    listViewTODO.setVisibility(ListView.VISIBLE);
+                //}
             }
         });
     }

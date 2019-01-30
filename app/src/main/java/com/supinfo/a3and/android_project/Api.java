@@ -14,9 +14,8 @@ import java.net.URL;
 
 public class Api extends AppCompatActivity {
 
-    Context context;
-    public void register(final String username, final String password, final String firstName, final String lastName, final String email, final Context context){
-    this.context = context;
+    //boolean state = false;
+    public void register(final String username, final String password, final String firstName, final String lastName, final String email){
         Thread thread = new Thread(new Runnable() {
 
             @Override
@@ -38,7 +37,8 @@ public class Api extends AppCompatActivity {
                             postToastMessage("Echec de l'inscription, utilisateur déjà existant.");
                         }
                         else{
-                            login(username, password, context);
+                            login(username, password);
+                            //isConnected(true);
                         }
 
                     } finally {
@@ -52,8 +52,7 @@ public class Api extends AppCompatActivity {
         thread.start();
     }
 
-    public void login(final String username, final String password, final Context context){
-        this.context = context;
+    public void login(final String username, final String password){
         Thread thread = new Thread(new Runnable() {
 
             @Override
@@ -78,6 +77,7 @@ public class Api extends AppCompatActivity {
                         else{
                             Log.e("string","Inscription réussie !");
                             postToastMessage("Vous êtes maintenant connecté !");
+                            //isConnected(true);
                         }
 
                     } finally {
@@ -91,6 +91,19 @@ public class Api extends AppCompatActivity {
         thread.start();
     }
 
+    /*public void isConnected(Boolean state){
+        if(state){
+            this.state=true;
+        }
+        else{
+            this.state=false;
+        }
+    }
+
+    public boolean isConnected(){
+        return this.state;
+    }*/
+
     public void postToastMessage(final String message) {
         Handler handler = new Handler(Looper.getMainLooper());
 
@@ -98,7 +111,8 @@ public class Api extends AppCompatActivity {
 
             @Override
             public void run() {
-                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                Register register = new Register();
+                Toast.makeText(register.getContext(), message, Toast.LENGTH_LONG).show();
             }
         });
     }
