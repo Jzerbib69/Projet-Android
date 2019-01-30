@@ -8,13 +8,16 @@ import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Api extends AppCompatActivity {
 
     boolean state = false;
-    String todo="";
+    List todo = new ArrayList();
     //WeakReference<Context> contextReference;
     public void register(final String username, final String password, final String firstName, final String lastName, final String email, Context context){
         //this.contextReference = new WeakReference<Context>(context);
@@ -148,11 +151,15 @@ public class Api extends AppCompatActivity {
                                 if(stringBuilder.charAt(i) == 't' && stringBuilder.charAt(i+1) == 'o' && stringBuilder.charAt(i+2) == 'd' && stringBuilder.charAt(i+3) == 'o'){
                                     for(int j = i+7; j<stringBuilder.length();j++){
                                         if(stringBuilder.charAt(j) == '"'){
-                                            todo=stringBuilder2.toString();
-                                            Log.e("string", todo);
+                                            Log.e("string",stringBuilder2.toString());
+                                            todo.add('"');
+                                            todo.add(stringBuilder2.toString());
+                                            todo.add("\", ");
                                         }
                                         stringBuilder2.append(stringBuilder.charAt(j));
                                     }
+                                    stringBuilder2.deleteCharAt(stringBuilder2.length());
+                                    stringBuilder2.deleteCharAt(stringBuilder2.length()-1);
                                 }
                             }
 

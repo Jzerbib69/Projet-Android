@@ -3,7 +3,9 @@ package com.supinfo.a3and.android_project;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -52,6 +54,9 @@ public class DisplayAllTodoList extends AppCompatActivity {
 
             Api api = new Api();
             api.listTodoList(username, password);
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayAllTodoList.this,
+                    android.R.layout.simple_list_item_1, api.todo);
+            todoListView.setAdapter(adapter);
         }
 
         /*final ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
