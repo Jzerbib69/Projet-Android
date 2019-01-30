@@ -2,9 +2,12 @@ package com.supinfo.a3and.android_project;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class Register extends AppCompatActivity{
@@ -69,4 +72,9 @@ public class Register extends AppCompatActivity{
             startActivity(intent);
         }
     }
+
+    public Context getContext(){
+        return this;
+    }
+
 }
