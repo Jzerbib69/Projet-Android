@@ -7,9 +7,6 @@
     <string name="Password">Password</string>
     <string name="Email">Email</string>
 
-    <string name="Bienvenue">Bienvenue sur MyTodoApp !</string>
-    <string name="Info">Vous pourrez poursuivre après vous êtes inscrit ou connecté !</string>
-
     <string name="Register">Register</string>
     <string name="Erase">Erase</string>
     <string name="Modify">Modify</string>
