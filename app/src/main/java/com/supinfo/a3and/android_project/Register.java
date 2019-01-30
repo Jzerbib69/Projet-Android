@@ -2,6 +2,7 @@ package com.supinfo.a3and.android_project;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,11 +28,11 @@ public class Register extends AppCompatActivity{
     }
 
     public void getData(){
-        usernameText = findViewById(R.id.edtUsername);
+        usernameText = findViewById(R.id.edtUsernameRegister);
         firstNameText = findViewById(R.id.edtFirstName);
         lastNameText = findViewById(R.id.edtLastName);
         emailText = findViewById(R.id.edtEmail);
-        passwordText = findViewById(R.id.edtPassword);
+        passwordText = findViewById(R.id.edtPasswordRegister);
     }
 
     public void initialiseData(){
@@ -60,8 +61,9 @@ public class Register extends AppCompatActivity{
             Toast.makeText(this, "Vous devez renseigner tous les champs !", Toast.LENGTH_SHORT).show();
         }
         else {
-            String test = Api.register();
-            Toast.makeText(this, "Inscription réussie", Toast.LENGTH_SHORT).show();
+            Api api = new Api();
+            api.register(dataUsername, dataPassword, dataFirstName, dataLastName, dataEmail);
+            Toast.makeText(this, "Inscription réussie !", Toast.LENGTH_SHORT).show();
         }
     }
 
