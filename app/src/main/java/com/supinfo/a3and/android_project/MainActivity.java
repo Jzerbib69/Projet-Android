@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText usernameLogin, passwordLogin;
@@ -30,10 +31,17 @@ public class MainActivity extends AppCompatActivity {
                 initialiseDataLogin();
                 Api api = new Api();
                 api.login(dataUsernameLogin, dataPasswordLogin);
-                Intent intent = new Intent(v.getContext(), DisplayAllTodoList.class);
-                intent.putExtra("username", dataUsernameLogin);
-                intent.putExtra("password", dataPasswordLogin);
-                startActivity(intent);
+                Register reg = new Register();
+                if (api.isConnected()){
+                    Toast.makeText(reg.getContext(), "Vous êtes maintenant connecté", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(v.getContext(), DisplayAllTodoList.class);
+                    intent.putExtra("username", dataUsernameLogin);
+                    intent.putExtra("password", dataPasswordLogin);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(reg.getContext(), "Erreur de connexion, vérifiez vos identifiants", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

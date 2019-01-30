@@ -14,7 +14,7 @@ import java.net.URL;
 
 public class Api extends AppCompatActivity {
 
-    //boolean state = false;
+    boolean state = false;
     Context context;
     public void register(final String username, final String password, final String firstName, final String lastName, final String email, Context context){
         this.context = context;
@@ -35,11 +35,12 @@ public class Api extends AppCompatActivity {
 
                         Log.e("string", stringBuilder.toString());
                         if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
-                            postToastMessage("Echec de l'inscription, utilisateur déjà existant.");
+                            //postToastMessage("Echec de l'inscription, utilisateur déjà existant.");
+                            isConnected(false);
                         }
                         else{
                             login(username, password);
-                            //isConnected(true);
+                            isConnected(true);
                         }
 
                     } finally {
@@ -73,12 +74,10 @@ public class Api extends AppCompatActivity {
 
                         Log.e("string", stringBuilder.toString());
                         if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
-                            postToastMessage("Echec de la connexion, veuillez vérifier vos Identifiants.");
+                            isConnected(false);
                         }
                         else{
-                            Log.e("string","Inscription réussie !");
-                            postToastMessage("Vous êtes maintenant connecté !");
-                            //isConnected(true);
+                            isConnected(true);
                         }
 
                     } finally {
@@ -92,7 +91,7 @@ public class Api extends AppCompatActivity {
         thread.start();
     }
 
-    /*public void isConnected(Boolean state){
+    public void isConnected(Boolean state){
         if(state){
             this.state=true;
         }
@@ -103,7 +102,7 @@ public class Api extends AppCompatActivity {
 
     public boolean isConnected(){
         return this.state;
-    }*/
+    }
 
     public void postToastMessage(final String message) {
         Handler handler = new Handler(Looper.getMainLooper());
