@@ -1,7 +1,11 @@
 package com.supinfo.a3and.android_project;
 
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -16,9 +20,9 @@ import okhttp3.Response;
 public class Api extends AppCompatActivity {
 
     OkHttpClient client = new OkHttpClient();
-
-    public void register(final String username, final String password, final String firstName, final String lastName, final String email){
-
+    Context context;
+    public void register(final String username, final String password, final String firstName, final String lastName, final String email, final Context context){
+    this.context = context;
         Thread thread = new Thread(new Runnable() {
 
             @Override
@@ -40,9 +44,11 @@ public class Api extends AppCompatActivity {
                         if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
                             Log.e("string", "Echec de l'inscription, utilisateur déjà éxistant.");
 
+                           postToastMessage("Echec de l'inscription, utilisateur déjà existant.");
                         }
                         else{
                             Log.e("string","Inscription réussie !");
+                            postToastMessage("Inscription réussie !");
                         }
                         //return stringBuilder.toString();
                     } finally {
@@ -103,4 +109,17 @@ public class Api extends AppCompatActivity {
             return null;
         }
     }
+
+    public void postToastMessage(final String message) {
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        handler.post(new Runnable() {
+
+            @Override
+            public void run() {
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 }
