@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
                 if (String.valueOf(api.isConnected()).equals("true")){
                     reponse = 1;
                     showToast(reponse);

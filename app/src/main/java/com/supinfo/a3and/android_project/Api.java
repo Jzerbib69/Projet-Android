@@ -3,6 +3,8 @@ package com.supinfo.a3and.android_project;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,6 +14,8 @@ import java.net.URL;
 public class Api extends AppCompatActivity {
 
     boolean state = false;
+    String todo="";
+    //WeakReference<Context> contextReference;
     public void register(final String username, final String password, final String firstName, final String lastName, final String email, Context context){
         //this.contextReference = new WeakReference<Context>(context);
 
@@ -133,12 +137,25 @@ public class Api extends AppCompatActivity {
                     try {
                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
                         StringBuilder stringBuilder = new StringBuilder();
+                        StringBuilder stringBuilder2 = new StringBuilder();
                         String line;
                         while ((line = bufferedReader.readLine()) != null) {
                             stringBuilder.append(line).append("\n");
                         }
                         bufferedReader.close();
                         Log.e("string", stringBuilder.toString());
+                            for(int i=0; i<stringBuilder.length();i++){
+                                if(stringBuilder.charAt(i) == 't' && stringBuilder.charAt(i+1) == 'o' && stringBuilder.charAt(i+2) == 'd' && stringBuilder.charAt(i+3) == 'o'){
+                                    for(int j = i+7; j<stringBuilder.length();j++){
+                                        if(stringBuilder.charAt(j) == '"'){
+                                            todo=stringBuilder2.toString();
+                                            Log.e("string", todo);
+                                        }
+                                        stringBuilder2.append(stringBuilder.charAt(j));
+                                    }
+                                }
+                            }
+
                         if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
                             Log.e("Erreur :", "Une erreur est survenue sur l'Utilisateur");
                         }
