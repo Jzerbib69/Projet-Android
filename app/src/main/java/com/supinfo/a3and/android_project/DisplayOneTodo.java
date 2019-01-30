@@ -32,12 +32,12 @@ public class DisplayOneTodo extends AppCompatActivity {
             if (intent.hasExtra("username") && intent.hasExtra("password")) {
                 usernameLast = intent.getStringExtra("username");
                 passwordLast = intent.getStringExtra("password");
-                id = intent.getIntExtra("id");
+                //id = intent.getIntExtra("id");
                 Log.e("username Last ", usernameLast);
                 Log.e("password Last ", passwordLast);
             }
             Api api = new Api();
-            api.readListTodo(usernameLast, passwordLast, id);
+            api.read(usernameLast, passwordLast, id);
         }
     }
 }

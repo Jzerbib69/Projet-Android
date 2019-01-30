@@ -3,6 +3,7 @@ package com.supinfo.a3and.android_project;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -55,15 +56,9 @@ public class DisplayAllTodoList extends AppCompatActivity {
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayAllTodoList.this,
                     android.R.layout.simple_list_item_1, api.todo);
             JSONArray jsonArray = new JSONArray(api.todo);
-            Log.e("string",
-                    "Number of entries " + jsonArray.length());
             try {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                        Log.e("string", jsonObject.getString("todo"));
-
-                        Log.e("string", jsonObject.getString("id"));
 
                 }
             } catch (JSONException e) {
@@ -73,6 +68,8 @@ public class DisplayAllTodoList extends AppCompatActivity {
 
             todoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                    Log.e("string", Long.toString(id));
+                    Log.e("string", Integer.toString(position));
                     Intent intent = new Intent(v.getContext(), DisplayOneTodo.class);
                     intent.putExtra("username", username);
                     intent.putExtra("password", password);
