@@ -36,6 +36,15 @@ public class Api extends AppCompatActivity {
                         bufferedReader.close();
                         //Log.e("string", stringBuilder.toString());
 
+                        Log.e("string", stringBuilder.toString());
+                        if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
+                            Log.e("string", "Echec de l'inscription, utilisateur déjà éxistant.");
+
+                        }
+                        else{
+                            Log.e("string","Inscription réussie !");
+                        }
+                        //return stringBuilder.toString();
                     } finally {
                         urlConnection.disconnect();
                     }
