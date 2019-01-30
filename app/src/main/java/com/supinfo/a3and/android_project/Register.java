@@ -1,8 +1,9 @@
 package com.supinfo.a3and.android_project;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -65,7 +66,10 @@ public class Register extends AppCompatActivity{
         else {
             Api api = new Api();
             api.register(dataUsername, dataPassword, dataFirstName, dataLastName, dataEmail, this);
-            finish();
+            Intent intent = new Intent(this, DisplayAllTodoList.class);
+            intent.putExtra("username", dataUsername);
+            intent.putExtra("password", dataPassword);
+            startActivity(intent);
         }
     }
 
