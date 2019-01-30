@@ -19,6 +19,8 @@ public class Api extends AppCompatActivity {
     ArrayList<String> todo = new ArrayList<>();
     JSONObject jsonObject;
 
+    StringBuilder soloTodo = new StringBuilder();
+
     public void register(final String username, final String password, final String firstName, final String lastName, final String email, Context context){
         //this.contextReference = new WeakReference<Context>(context);
 
@@ -211,14 +213,13 @@ public class Api extends AppCompatActivity {
 
             @Override
             public void run() {
+                Log.e("string", "test");
                 try {
                     JSONArray jsonArray = new JSONArray(todo.toString());
                     Log.e("string", "Number of entries " + jsonArray.length());
-                    String id = "";
+
                     JSONObject jsonObject = jsonArray.getJSONObject(idList);
-                    Log.e("string", jsonObject.getString("todo"));
-                    Log.e("string", jsonObject.getString("id"));
-                    id = jsonObject.getString("id");
+                    String id = jsonObject.getString("id");
                     URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=read&username=" + username + "&password=" + password+ "id=" +id);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     try {
@@ -230,13 +231,7 @@ public class Api extends AppCompatActivity {
                         }
                         bufferedReader.close();
                         Log.e("string", stringBuilder.toString());
-                        if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
-                            isConnected(false);
-                        }
-                        else{
-                            isConnected(true);
-                        }
-
+                        soloTodo = stringBuilder;
                     } finally {
                         urlConnection.disconnect();
                     }

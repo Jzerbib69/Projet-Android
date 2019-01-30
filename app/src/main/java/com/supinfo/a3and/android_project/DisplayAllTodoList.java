@@ -51,13 +51,33 @@ public class DisplayAllTodoList extends AppCompatActivity {
             todoListView = findViewById(R.id.lstTodoList);
 
             api.listTodoList(username, password);
+
+            try {
+                Thread.sleep(800);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayAllTodoList.this,
                     android.R.layout.simple_list_item_1, api.todo);
-            JSONArray jsonArray = new JSONArray(api.todo);
+            JSONArray jsonArray = null;
             try {
+                jsonArray = new JSONArray(api.todo.toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                Log.e("stringbuilder",jsonArray.getString(0));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                JSONObject jsonObject;
+                Log.e("stringbuilder2", Integer.toString(jsonArray.length()));
                 for (int i = 0; i < jsonArray.length(); i++) {
-                    Log.e("jsonarray: ", "nombre"+jsonArray.length());
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    Log.e("stringbuilder3", Integer.toString(jsonArray.length()));
+                    jsonObject = jsonArray.getJSONObject(i);
+                    Log.e("stringfinal","coucou");
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
