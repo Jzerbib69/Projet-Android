@@ -34,10 +34,15 @@ public class MainActivity extends AppCompatActivity {
                 initialiseDataLogin();
                 Api api = new Api();
                 api.login(dataUsernameLogin, dataPasswordLogin);
-                //Register reg = new Register();
-                //if (api.isConnected()){
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                Log.e("string2",String.valueOf(api.isConnected()));
+                if (String.valueOf(api.isConnected()).equals("true")){
                     //Toast.makeText(reg.getContext(), "Vous êtes maintenant connecté", Toast.LENGTH_SHORT).show();
-                    Log.e("Bravo", "Vous êtes connecté");
                     Intent intent = new Intent(v.getContext(), DisplayAllTodoList.class);
                     intent.putExtra("username", dataUsernameLogin);
                     intent.putExtra("password", dataPasswordLogin);
@@ -45,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 /*}
                 else {
                     //Toast.makeText(reg.getContext(), "Erreur de connexion, vérifiez vos identifiants", Toast.LENGTH_SHORT).show();
-                    Log.e("Erreur", "Erreur de connexion, vérifiez vos identifiants");
-                }*/
+                }
             }
         });
     }
