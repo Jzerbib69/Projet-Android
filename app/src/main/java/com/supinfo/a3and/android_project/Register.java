@@ -64,13 +64,13 @@ public class Register extends AppCompatActivity{
         }
         else {
             Api api = new Api();
-            api.register(dataUsername, dataPassword, dataFirstName, dataLastName, dataEmail);
+            api.register(dataUsername, dataPassword, dataFirstName, dataLastName, dataEmail, this);
             finish();
         }
     }
 
-    public Context getContext(){
+    /*public Context getContext(){
         return this;
-    }
+    }*/
 
 }

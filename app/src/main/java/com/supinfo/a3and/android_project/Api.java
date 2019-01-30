@@ -15,9 +15,10 @@ import java.net.URL;
 public class Api extends AppCompatActivity {
 
     //boolean state = false;
-    public void register(final String username, final String password, final String firstName, final String lastName, final String email){
+    Context context;
+    public void register(final String username, final String password, final String firstName, final String lastName, final String email, Context context){
+        this.context = context;
         Thread thread = new Thread(new Runnable() {
-
             @Override
             public void run() {
                 try {
@@ -111,8 +112,7 @@ public class Api extends AppCompatActivity {
 
             @Override
             public void run() {
-                Register register = new Register();
-                Toast.makeText(register.getContext(), message, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
             }
         });
     }
