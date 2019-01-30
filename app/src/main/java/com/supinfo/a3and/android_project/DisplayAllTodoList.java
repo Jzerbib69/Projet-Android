@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class DisplayAllTodoList extends AppCompatActivity {
 
     ListView todoListView;
@@ -50,6 +54,21 @@ public class DisplayAllTodoList extends AppCompatActivity {
             api.listTodoList(username, password);
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayAllTodoList.this,
                     android.R.layout.simple_list_item_1, api.todo);
+            JSONArray jsonArray = new JSONArray(api.todo);
+            Log.e("string",
+                    "Number of entries " + jsonArray.length());
+            try {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                        Log.e("string", jsonObject.getString("todo"));
+
+                        Log.e("string", jsonObject.getString("id"));
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             todoListView.setAdapter(adapter);
 
             todoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
