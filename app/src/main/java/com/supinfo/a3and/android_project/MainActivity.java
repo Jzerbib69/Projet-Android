@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
                 getDataLogin();
                 initialiseDataLogin();
                 Api api = new Api();
-                //api.login(dataUsernameLogin, dataPasswordLogin);
-                Intent intent = new Intent(this, DisplayAllTodoList.class);
+                api.login(dataUsernameLogin, dataPasswordLogin);
+                Intent intent = new Intent(v.getContext(), DisplayAllTodoList.class);
                 intent.putExtra("username", dataUsernameLogin);
                 intent.putExtra("password", dataPasswordLogin);
                 startActivity(intent);
@@ -51,8 +51,4 @@ public class MainActivity extends AppCompatActivity {
         dataUsernameLogin = usernameLogin.getText().toString();
         dataPasswordLogin = passwordLogin.getText().toString();
     }
-
-    /*public void NavigationDisplay (View view){
-        startActivity(new Intent(this, Display.class));
-    }*/
 }
