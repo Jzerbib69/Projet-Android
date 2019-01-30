@@ -17,7 +17,7 @@ public class DisplayAllTodoList extends AppCompatActivity {
             String password= "";
             if (intent.hasExtra("username") && intent.hasExtra("password")){
                 username = intent.getStringExtra("username");
-                password = intent.getStringExtra("username");
+                password = intent.getStringExtra("password");
             }
             TextView textView = findViewById(R.id.txtView);
             textView.setText(username + "; " + password);
