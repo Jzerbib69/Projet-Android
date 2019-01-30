@@ -10,6 +10,7 @@ import android.widget.Toast;
 public class Register extends AppCompatActivity{
     EditText usernameText, firstNameText, lastNameText,emailText, passwordText;
     String dataUsername, dataFirstName, dataLastName, dataEmail, dataPassword;
+    Api api = new Api();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,6 @@ public class Register extends AppCompatActivity{
             Toast.makeText(this, "Vous devez renseigner tous les champs !", Toast.LENGTH_SHORT).show();
         }
         else {
-            Api api = new Api();
             api.register(dataUsername, dataPassword, dataFirstName, dataLastName, dataEmail, this);
             Intent intent = new Intent(this, DisplayAllTodoList.class);
             intent.putExtra("username", dataUsername);

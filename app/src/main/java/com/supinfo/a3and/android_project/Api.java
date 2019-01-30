@@ -271,6 +271,43 @@ public class Api extends AppCompatActivity {
         thread.start();
     }
 
+<<<<<<< Updated upstream
+=======
+    public void updateTodoList(final String username, final String password, final Integer id, final String text){
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=update&username=" + username + "&password=" + password+ "id=" + id + "&text=" + text);
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    try {
+                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                        StringBuilder stringBuilder = new StringBuilder();
+                        String line;
+                        while ((line = bufferedReader.readLine()) != null) {
+                            stringBuilder.append(line).append("\n");
+                        }
+                        bufferedReader.close();
+                        Log.e("string", stringBuilder.toString());
+                        if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
+                            isConnected(false);
+                        }
+                        else{
+                            isConnected(true);
+                        }
+
+                    } finally {
+                        urlConnection.disconnect();
+                    }
+                } catch (Exception e) {
+                    Log.e("ERROR", e.getMessage(), e);
+                }
+            }
+        });
+        thread.start();
+    }
+>>>>>>> Stashed changes
 
     public void isConnected(Boolean state){
         if(state){

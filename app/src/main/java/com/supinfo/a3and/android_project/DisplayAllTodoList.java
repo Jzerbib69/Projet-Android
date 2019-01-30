@@ -19,7 +19,7 @@ public class DisplayAllTodoList extends AppCompatActivity {
 
     ListView todoListView;
     String username,password;
-
+    Api api = new Api();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,6 @@ public class DisplayAllTodoList extends AppCompatActivity {
             }
             todoListView = findViewById(R.id.lstTodoList);
 
-            Api api = new Api();
             api.listTodoList(username, password);
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayAllTodoList.this,
                     android.R.layout.simple_list_item_1, api.todo);
@@ -73,7 +72,7 @@ public class DisplayAllTodoList extends AppCompatActivity {
                     Intent intent = new Intent(v.getContext(), DisplayOneTodo.class);
                     intent.putExtra("username", username);
                     intent.putExtra("password", password);
-                    intent.putExtra("id", "id");
+                    intent.putExtra("id", position);
                     startActivity(intent);
                 }
             });
