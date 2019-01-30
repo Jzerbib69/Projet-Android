@@ -8,14 +8,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.supinfo.a3and.android_project.Database.DatabaseHelper;
+
 public class MainActivity extends AppCompatActivity {
     EditText usernameLogin, passwordLogin;
     String dataUsernameLogin, dataPasswordLogin;
+    DatabaseHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        myDb = new DatabaseHelper(this);
 
         final Button buttonRegister = findViewById(R.id.btnRegister);
         final Button buttonLogin = findViewById(R.id.btnLogin);
