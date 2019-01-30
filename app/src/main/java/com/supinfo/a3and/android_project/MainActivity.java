@@ -3,10 +3,10 @@ package com.supinfo.a3and.android_project;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText usernameLogin, passwordLogin;
@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         final Button buttonLogin = findViewById(R.id.btnLogin);
         buttonRegister.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                onPause();
                 NavigationRegister(v);
             }
         });
@@ -31,17 +30,19 @@ public class MainActivity extends AppCompatActivity {
                 initialiseDataLogin();
                 Api api = new Api();
                 api.login(dataUsernameLogin, dataPasswordLogin);
-                Register reg = new Register();
-                if (api.isConnected()){
-                    Toast.makeText(reg.getContext(), "Vous êtes maintenant connecté", Toast.LENGTH_SHORT).show();
+                //Register reg = new Register();
+                //if (api.isConnected()){
+                    //Toast.makeText(reg.getContext(), "Vous êtes maintenant connecté", Toast.LENGTH_SHORT).show();
+                    Log.e("Bravo", "Vous êtes connecté");
                     Intent intent = new Intent(v.getContext(), DisplayAllTodoList.class);
                     intent.putExtra("username", dataUsernameLogin);
                     intent.putExtra("password", dataPasswordLogin);
                     startActivity(intent);
-                }
+                /*}
                 else {
-                    Toast.makeText(reg.getContext(), "Erreur de connexion, vérifiez vos identifiants", Toast.LENGTH_SHORT).show();
-                }
+                    //Toast.makeText(reg.getContext(), "Erreur de connexion, vérifiez vos identifiants", Toast.LENGTH_SHORT).show();
+                    Log.e("Erreur", "Erreur de connexion, vérifiez vos identifiants");
+                }*/
             }
         });
     }

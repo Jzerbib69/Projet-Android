@@ -12,5 +12,8 @@
 
     <string name="Register">Register</string>
     <string name="Erase">Erase</string>
+    <string name="Modify">Modify</string>
+    <string name="Share">Share</string>
     <string name="Login">Login</string>
+    <string name="Logout">Logout</string>
 </resources>
