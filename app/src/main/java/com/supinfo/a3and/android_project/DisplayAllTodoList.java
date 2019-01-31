@@ -10,14 +10,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import org.json.JSONObject;
-
 public class DisplayAllTodoList extends AppCompatActivity {
 
     ListView todoListView;
     String username,password;
     Api api = new Api();
-    JSONObject jsonObject;
+    int numberFriend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +62,22 @@ public class DisplayAllTodoList extends AppCompatActivity {
                     Intent intent = new Intent(v.getContext(), DisplayOneTodo.class);
                     intent.putExtra("username", username);
                     intent.putExtra("password", password);
-                    intent.putExtra("id", api.otherDetail.get(0));
-                    intent.putExtra("userinvited", api.otherDetail.get(1));
-                    startActivity(intent);
+                    intent.putExtra("id", api.idTodo.get(position));
+                    for (int i=0; i < api.userFriendTodo.size(); i++) {
+                        if (i > 0) {
+                            numberFriend += 1;
+                        } else {
+                            numberFriend = 1;
+                        }
+                    }
+                    if (numberFriend < 2){
+                        intent.putExtra("userinvited", api.userFriendTodo.get(0));
+                        startActivity(intent);
+                    }
+                    else {
+                        intent.putExtra("userinvited", api.userFriendTodo.get(1));
+                        startActivity(intent);
+                    }
                 }
             });
         }
