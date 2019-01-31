@@ -12,22 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Controller.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register"
-        android:parentActivityName=".MainActivity">
+        <activity android:name=".View.Register"
+        android:parentActivityName=".Controller.MainActivity">
         <meta-data
             android:name="android.support.PARENT_Activity"
             android:value=".MainActivity" />
         </activity>
-        <activity android:name=".DisplayAllTodoList">
+        <activity android:name=".View.DisplayAllTodoList">
         </activity>
-        <activity android:name=".DisplayOneTodo">
+        <activity android:name=".View.DisplayOneTodo">
         </activity>
     </application>
 

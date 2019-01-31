@@ -1,4 +1,4 @@
-package com.supinfo.a3and.android_project;
+package com.supinfo.a3and.android_project.Controller;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.supinfo.a3and.android_project.Database.DatabaseHelper;
+import com.supinfo.a3and.android_project.Model.DatabaseHelper;
+import com.supinfo.a3and.android_project.R;
+import com.supinfo.a3and.android_project.Util.Api;
+import com.supinfo.a3and.android_project.View.DisplayAllTodoList;
+import com.supinfo.a3and.android_project.View.Register;
 
 public class MainActivity extends AppCompatActivity {
     EditText usernameLogin, passwordLogin;
