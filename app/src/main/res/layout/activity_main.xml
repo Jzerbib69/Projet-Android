@@ -22,10 +22,11 @@
 
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/imageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
+            android:contentDescription="@string/Icon"
             app:srcCompat="@drawable/todolisticon" />
 
         <EditText
@@ -34,9 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:autofillHints="@string/Username"
+            android:importantForAutofill="no"
             android:background="@drawable/custom_edittext_bg"
-            android:drawableLeft="@drawable/ic_username"
+            android:drawableStart="@drawable/ic_username"
             android:inputType="text"
 
             tools:layout_editor_absoluteX="145dp"
@@ -50,7 +51,7 @@
             android:layout_marginTop="10dp"
             android:autofillHints="@string/Password"
             android:background="@drawable/custom_edittext_bg"
-            android:drawableLeft="@drawable/ic_password"
+            android:drawableStart="@drawable/ic_password"
             android:inputType="textPassword"
             tools:layout_editor_absoluteX="145dp"
             tools:layout_editor_absoluteY="39dp" />
@@ -77,37 +78,6 @@
             android:text="@string/Register"
             tools:layout_editor_absoluteX="100dp"
             tools:layout_editor_absoluteY="300dp" />
-
-
-
-        <!--
-                <LinearLayout
-                    android:layout_width="230dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btnRegister"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="25dp"
-                        android:text="@string/Register"
-                        tools:layout_editor_absoluteX="100dp"
-                        tools:layout_editor_absoluteY="300dp" />
-
-                    <Button
-                        android:id="@+id/btnLogin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:text="@string/Login"
-                        tools:layout_editor_absoluteX="218dp"
-                        tools:layout_editor_absoluteY="123dp" />
-                </LinearLayout>
-        -->
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
