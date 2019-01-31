@@ -1,11 +1,14 @@
 package com.supinfo.a3and.android_project.Model;
 
+import android.content.ContentValues;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import com.supinfo.a3and.android_project.R;
-
+import android.database.sqlite.SQLiteDatabase;
 
 public class RegisterBDD extends AppCompatActivity {
+
+    DatabaseHelper dbHelper = new DatabaseHelper(this);
 
     EditText usernameText, firstNameText, lastNameText,emailText, passwordText;
     String dataUsername, dataFirstName, dataLastName, dataEmail, dataPassword;
@@ -29,6 +32,15 @@ public class RegisterBDD extends AppCompatActivity {
     public void RegisterBDD(){
         getData();
         initialiseData();
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(dbHelper.COLUMN_USERNAME, dataUsername);
+        contentValues.put(dbHelper.COLUMN_FIRSTNAME, dataFirstName);
+        contentValues.put(dbHelper.COLUMN_LASTNAME, dataLastName);
+        contentValues.put(dbHelper.COLUMN_EMAIL, dataEmail);
+        contentValues.put(dbHelper.COLUMN_PASSWORD, dataPassword);
+        db.insert(dbHelper.TABLE_USERS, null, contentValues);
+
     }
 
 
