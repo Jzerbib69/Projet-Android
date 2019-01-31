@@ -1,4 +1,4 @@
-package com.supinfo.a3and.android_project;
+package com.supinfo.a3and.android_project.View;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.supinfo.a3and.android_project.Util.Api;
+import com.supinfo.a3and.android_project.R;
 
 public class DisplayOneTodo extends AppCompatActivity {
 
