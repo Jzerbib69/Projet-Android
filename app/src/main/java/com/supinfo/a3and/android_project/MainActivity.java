@@ -36,11 +36,10 @@ public class MainActivity extends AppCompatActivity {
                 Api api = new Api();
                 api.login(dataUsernameLogin, dataPasswordLogin);
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(800);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
                 if (String.valueOf(api.isConnected()).equals("true")){
                     reponse = 1;
                     showToast(reponse);

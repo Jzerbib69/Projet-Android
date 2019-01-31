@@ -69,22 +69,28 @@ public class DisplayOneTodo extends AppCompatActivity {
                 Log.e("id", id);
                 Log.e("userFriend", userFriend);
             }
+            //if()
             api.read(usernameLast, passwordLast, id);
-            EditText edtTodoAlone = findViewById(R.id.edtDetailTodo);
+            try {
+                Thread.sleep(800);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             Log.e("test", api.detailAlone);
-            //edtTodoAlone.setText(api.todoAlone);
+            EditText edtTodoAlone = findViewById(R.id.edtDetailTodo);
+            edtTodoAlone.setText(api.detailAlone);
         }
 
         final Button buttonUpdate = findViewById(R.id.btnModify);
         buttonUpdate.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                /*EditText contentEdt = findViewById(R.id.edtDetailTodo);
+                EditText contentEdt = findViewById(R.id.edtDetailTodo);
                 String detailTodo = contentEdt.getText().toString();
-                api.updateTodoList(usernameLast,passwordLast,id,detailTodo);*/
-                Intent intent = new Intent(v.getContext(), DisplayAllTodoList.class);
-                intent.putExtra("username", usernameLast);
-                intent.putExtra("password", passwordLast);
-                startActivity(intent);
+                api.updateTodoList(usernameLast,passwordLast,id,detailTodo);
+                    Intent intent = new Intent(v.getContext(), DisplayAllTodoList.class);
+                    intent.putExtra("username", usernameLast);
+                    intent.putExtra("password", passwordLast);
+                    startActivity(intent);
             }
         });
     }
