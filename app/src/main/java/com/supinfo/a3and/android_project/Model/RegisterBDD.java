@@ -1,10 +1,8 @@
-package com.supinfo.a3and.android_project.Database;
+package com.supinfo.a3and.android_project.Model;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import com.supinfo.a3and.android_project.R;
-import com.supinfo.a3and.android_project.Register;
 
 
 public class RegisterBDD extends AppCompatActivity {
@@ -31,7 +29,6 @@ public class RegisterBDD extends AppCompatActivity {
     public void RegisterBDD(){
         getData();
         initialiseData();
-
     }
 
 

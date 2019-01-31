@@ -1,4 +1,4 @@
-package com.supinfo.a3and.android_project;
+package com.supinfo.a3and.android_project.Util;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -16,10 +16,10 @@ import java.util.ArrayList;
 public class Api extends AppCompatActivity {
 
     boolean state = false;
-    ArrayList<String> todo = new ArrayList<>();
-    ArrayList<String> idTodo = new ArrayList<>();
-    ArrayList<String> userFriendTodo = new ArrayList<>();
-    String detailAlone;
+    public ArrayList<String> todo = new ArrayList<>();
+    public ArrayList<String> idTodo = new ArrayList<>();
+    public ArrayList<String> userFriendTodo = new ArrayList<>();
+    public String detailAlone;
     JSONObject jsonObject;
 
     public void register(final String username, final String password, final String firstName, final String lastName, final String email, Context context){

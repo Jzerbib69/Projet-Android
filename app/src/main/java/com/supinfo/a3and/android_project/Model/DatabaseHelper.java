@@ -1,4 +1,4 @@
-package com.supinfo.a3and.android_project.Database;
+package com.supinfo.a3and.android_project.Model;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

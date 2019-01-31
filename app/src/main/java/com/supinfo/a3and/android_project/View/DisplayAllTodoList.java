@@ -1,5 +1,6 @@
-package com.supinfo.a3and.android_project;
+package com.supinfo.a3and.android_project.View;
 
+import com.supinfo.a3and.android_project.Util.Api;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.supinfo.a3and.android_project.Controller.MainActivity;
+import com.supinfo.a3and.android_project.R;
 
 public class DisplayAllTodoList extends AppCompatActivity {
 
