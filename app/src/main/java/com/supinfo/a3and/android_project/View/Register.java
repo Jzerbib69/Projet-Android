@@ -1,12 +1,16 @@
 package com.supinfo.a3and.android_project.View;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.supinfo.a3and.android_project.Model.RegisterBDD;
 import com.supinfo.a3and.android_project.R;
 import com.supinfo.a3and.android_project.Util.Api;
 import com.supinfo.a3and.android_project.View.DisplayAllTodoList;
@@ -15,6 +19,7 @@ public class Register extends AppCompatActivity{
     EditText usernameText, firstNameText, lastNameText,emailText, passwordText;
     String dataUsername, dataFirstName, dataLastName, dataEmail, dataPassword;
     Api api = new Api();
+    RegisterBDD register = new RegisterBDD();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,5 +78,11 @@ public class Register extends AppCompatActivity{
             startActivity(intent);
             Toast.makeText(this, "Vous êtes maintenant connecté", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private boolean isNetworkAvailable(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null;
     }
 }
