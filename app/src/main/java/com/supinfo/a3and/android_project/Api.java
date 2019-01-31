@@ -80,7 +80,7 @@ public class Api extends AppCompatActivity {
                         }
                         bufferedReader.close();
                         if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
-                            Log.e("Erreur :", "Les identifiants sont incorrectes");
+                            Log.e("Erreur ", "Les identifiants sont incorrectes");
 
                         }
                         else{
@@ -222,13 +222,10 @@ public class Api extends AppCompatActivity {
                             stringBuilder.append(line).append("\n");
                         }
                         bufferedReader.close();
-                        JSONObject jsonObject = new JSONObject(stringBuilder.toString());
-                        detailAlone = jsonObject.getString("todo");
-                        if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
-                            Log.e("Erreur ", "Une erreur est survenue sur la TodoList");
-                        }
-                        else{
-                            isConnected(true);
+                        JSONArray jsonArray = new JSONArray(stringBuilder.toString());
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            jsonObject = jsonArray.getJSONObject(i);
+                            detailAlone = (jsonObject.getString("todo"));
                         }
                     } finally {
                         urlConnection.disconnect();
@@ -241,13 +238,13 @@ public class Api extends AppCompatActivity {
         thread.start();
     }
 
-    public void updateTodoList(final String username, final String password, final Integer id, final String text){
+    public void updateTodoList(final String username, final String password, final String id, final String text){
         Thread thread = new Thread(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=update&username=" + username + "&password=" + password+ "id=" + id + "&text=" + text);
+                    URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=update&username=" + username + "&password=" + password+ "&id=" + id + "&todo=" + text);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     try {
                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -287,18 +284,5 @@ public class Api extends AppCompatActivity {
 
     public boolean isConnected(){
         return this.state;
-    }
-
-    public void istodoAlone(Boolean reponse, String leDetail){
-        if(reponse){
-            this.detailAlone="good";
-        }
-        else{
-            this.detailAlone="test";
-        }
-    }
-
-    public String returnDetailTodo(){
-        return this.detailAlone;
     }
 }
