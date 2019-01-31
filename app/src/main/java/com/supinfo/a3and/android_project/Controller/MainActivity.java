@@ -29,12 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myDb = new DatabaseHelper(this);
-
-        if (isNetworkAvailable()) {
-            Toast.makeText(this, "Vous êtes maintenant connecté à internet", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "pas internet", Toast.LENGTH_SHORT).show();
-        }
+        Boolean isConnexion;
 
         final Button buttonRegister = findViewById(R.id.btnRegister);
         final Button buttonLogin = findViewById(R.id.btnLogin);
@@ -92,11 +87,4 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Echec de la connexion, veuillez vérifier vos Identifiants.", Toast.LENGTH_SHORT).show();
         }
     }
-
-    private boolean isNetworkAvailable(){
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null;
-    }
-
 }
