@@ -3,7 +3,6 @@ package com.supinfo.a3and.android_project;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,15 +10,14 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DisplayAllTodoList extends AppCompatActivity {
 
     ListView todoListView;
     String username,password;
-
+    Api api = new Api();
+    JSONObject jsonObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +27,6 @@ public class DisplayAllTodoList extends AppCompatActivity {
         final Button buttonLogout = findViewById(R.id.btnLogout);
         buttonLogout.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Api api = new Api();
                 api.logout();
                 try {
                     Thread.sleep(500);
@@ -51,7 +48,6 @@ public class DisplayAllTodoList extends AppCompatActivity {
             }
             todoListView = findViewById(R.id.lstTodoList);
 
-            Api api = new Api();
             api.listTodoList(username, password);
 
             try {
@@ -61,29 +57,6 @@ public class DisplayAllTodoList extends AppCompatActivity {
             }
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayAllTodoList.this,
                     android.R.layout.simple_list_item_1, api.todo);
-            JSONArray jsonArray = null;
-            try {
-                jsonArray = new JSONArray(api.todo.toString());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            try {
-                Log.e("stringbuilder",jsonArray.getString(0));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            try {
-                JSONObject jsonObject;
-                Log.e("stringbuilder2", Integer.toString(jsonArray.length()));
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    Log.e("stringbuilder3", Integer.toString(jsonArray.length()));
-                    jsonObject = jsonArray.getJSONObject(i);
-                    Log.e("stringfinal","coucou");
-
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
             todoListView.setAdapter(adapter);
 
             todoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -91,7 +64,8 @@ public class DisplayAllTodoList extends AppCompatActivity {
                     Intent intent = new Intent(v.getContext(), DisplayOneTodo.class);
                     intent.putExtra("username", username);
                     intent.putExtra("password", password);
-                    intent.putExtra("id", "id");
+                    intent.putExtra("id", api.otherDetail.get(0));
+                    intent.putExtra("userinvited", api.otherDetail.get(1));
                     startActivity(intent);
                 }
             });
