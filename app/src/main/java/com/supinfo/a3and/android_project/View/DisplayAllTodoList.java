@@ -1,5 +1,6 @@
-package com.supinfo.a3and.android_project;
+package com.supinfo.a3and.android_project.View;
 
+import com.supinfo.a3and.android_project.Util.Api;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,14 +11,15 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import org.json.JSONObject;
+import com.supinfo.a3and.android_project.Controller.MainActivity;
+import com.supinfo.a3and.android_project.R;
 
 public class DisplayAllTodoList extends AppCompatActivity {
 
     ListView todoListView;
     String username,password;
     Api api = new Api();
-    JSONObject jsonObject;
+    int numberFriend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +66,22 @@ public class DisplayAllTodoList extends AppCompatActivity {
                     Intent intent = new Intent(v.getContext(), DisplayOneTodo.class);
                     intent.putExtra("username", username);
                     intent.putExtra("password", password);
-                    intent.putExtra("id", api.otherDetail.get(0));
-                    intent.putExtra("userinvited", api.otherDetail.get(1));
-                    startActivity(intent);
+                    intent.putExtra("id", api.idTodo.get(position));
+                    for (int i=0; i < api.userFriendTodo.size(); i++) {
+                        if (i > 0) {
+                            numberFriend += 1;
+                        } else {
+                            numberFriend = 1;
+                        }
+                    }
+                    if (numberFriend < 2){
+                        intent.putExtra("userinvited", api.userFriendTodo.get(0));
+                        startActivity(intent);
+                    }
+                    else {
+                        intent.putExtra("userinvited", api.userFriendTodo.get(1));
+                        startActivity(intent);
+                    }
                 }
             });
         }

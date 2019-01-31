@@ -1,4 +1,4 @@
-package com.supinfo.a3and.android_project.Database;
+package com.supinfo.a3and.android_project.Model;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,8 +10,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final int DB_VERSION = 1;
 
     // Table Names
-    private static final String TABLE_USERS = "users";
-    private static final String TABLE_TODOLIST = "todolist";
+    public static final String TABLE_USERS = "users";
+    public static final String TABLE_TODOLIST = "todolist";
 
 
     // USERS Table - column names
@@ -38,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             COLUMN_EMAIL + " TEXT, " + COLUMN_PASSWORD + " TEXT )";
 
     //TODOLIST table create statement
-    public static final String CREATE_TABLE_TODOLIST = "CREATE TABLE "
+    private static final String CREATE_TABLE_TODOLIST = "CREATE TABLE "
             + TABLE_TODOLIST + "(" + COLUMN_TODOLISTID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_LASTUPDATE + " DATETIME, " + COLUMN_USERCREATOR + " INTEGER, " +
             COLUMN_USERINVITED + " INTEGER, " + COLUMN_TODO + " TEXT )";

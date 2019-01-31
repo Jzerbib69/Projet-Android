@@ -1,4 +1,4 @@
-package com.supinfo.a3and.android_project;
+package com.supinfo.a3and.android_project.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.supinfo.a3and.android_project.R;
+import com.supinfo.a3and.android_project.Util.Api;
+import com.supinfo.a3and.android_project.View.DisplayAllTodoList;
 
 public class Register extends AppCompatActivity{
     EditText usernameText, firstNameText, lastNameText,emailText, passwordText;

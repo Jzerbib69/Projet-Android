@@ -1,4 +1,4 @@
-package com.supinfo.a3and.android_project;
+package com.supinfo.a3and.android_project.Util;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -16,9 +16,10 @@ import java.util.ArrayList;
 public class Api extends AppCompatActivity {
 
     boolean state = false;
-    ArrayList<String> todo = new ArrayList<>();
-    String detailAlone;
-    ArrayList<String> otherDetail = new ArrayList<>();
+    public ArrayList<String> todo = new ArrayList<>();
+    public ArrayList<String> idTodo = new ArrayList<>();
+    public ArrayList<String> userFriendTodo = new ArrayList<>();
+    public String detailAlone;
     JSONObject jsonObject;
 
     public void register(final String username, final String password, final String firstName, final String lastName, final String email, Context context){
@@ -150,9 +151,9 @@ public class Api extends AppCompatActivity {
                         JSONArray jsonArray = new JSONArray(stringBuilder.toString());
                         for (int i = 0; i < jsonArray.length(); i++) {
                             jsonObject = jsonArray.getJSONObject(i);
+                            idTodo.add(jsonObject.getString("id"));
+                            userFriendTodo.add(jsonObject.getString("userinvited"));
                             todo.add(jsonObject.getString("todo"));
-                            otherDetail.add(jsonObject.getString("id"));
-                            otherDetail.add(jsonObject.getString("userinvited"));
                         }
                         if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
                             Log.e("Erreur ", "Une erreur est survenue sur la TodoList");
@@ -177,7 +178,7 @@ public class Api extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=share&username=" + username + "&password=" + password+ "user=" +usernameFriend);
+                    URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=share&username=" + username + "&password=" + password+ "&user=" +usernameFriend);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     try {
                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -194,7 +195,6 @@ public class Api extends AppCompatActivity {
                         else{
                             isConnected(true);
                         }
-
                     } finally {
                         urlConnection.disconnect();
                     }
@@ -212,7 +212,7 @@ public class Api extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=list&username=" + username + "&password=" + password);
+                    URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=read&username=" + username + "&password=" + password + "&id=" + id);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     try {
                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -222,9 +222,8 @@ public class Api extends AppCompatActivity {
                             stringBuilder.append(line).append("\n");
                         }
                         bufferedReader.close();
-                        JSONArray jsonArray = new JSONArray(stringBuilder.toString());
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            jsonObject = jsonArray.getJSONObject(i);
+                        JSONObject jsonObject = new JSONObject(stringBuilder.toString());
+                        for (int i = 0; i < jsonObject.length(); i++) {
                             detailAlone = (jsonObject.getString("todo"));
                         }
                     } finally {
