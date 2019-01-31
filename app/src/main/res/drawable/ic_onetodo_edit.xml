@@ -12,7 +12,7 @@
         </shape>
     </item>
     <item
-        android:drawable="@drawable/ic_vpn_key_black_24dp"
+        android:drawable="@drawable/todolisticon"
         android:width="35dp"
         android:height="35dp"
         android:gravity="center"/>
