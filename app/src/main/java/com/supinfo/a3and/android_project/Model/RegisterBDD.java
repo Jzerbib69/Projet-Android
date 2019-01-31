@@ -29,10 +29,11 @@ public class RegisterBDD extends AppCompatActivity {
         dataPassword = passwordText.getText().toString();
     }
 
-    public void RegisterBDD(){
+    /*public void RegisterBDD(){
         getData();
         initialiseData();
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = new SQLiteDatabase();
+        this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(dbHelper.COLUMN_USERNAME, dataUsername);
         contentValues.put(dbHelper.COLUMN_FIRSTNAME, dataFirstName);
@@ -40,8 +41,7 @@ public class RegisterBDD extends AppCompatActivity {
         contentValues.put(dbHelper.COLUMN_EMAIL, dataEmail);
         contentValues.put(dbHelper.COLUMN_PASSWORD, dataPassword);
         db.insert(dbHelper.TABLE_USERS, null, contentValues);
-
-    }
+    }*/
 
 
 
