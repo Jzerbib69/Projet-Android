@@ -29,11 +29,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myDb = new DatabaseHelper(this);
+        Boolean isConnexion;
 
         if (isNetworkAvailable()) {
-            Toast.makeText(this, "Vous êtes maintenant connecté à internet", Toast.LENGTH_SHORT).show();
+            isConnexion = true;
         } else {
-            Toast.makeText(this, "pas internet", Toast.LENGTH_SHORT).show();
+            isConnexion = false;
+            Toast.makeText(this, "Vous n'avez pas de connexion Internet", Toast.LENGTH_SHORT).show();
         }
 
         final Button buttonRegister = findViewById(R.id.btnRegister);

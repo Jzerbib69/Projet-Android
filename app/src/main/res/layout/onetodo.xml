@@ -12,6 +12,9 @@
         android:layout_height="52dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="88dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,12 +44,12 @@
         <EditText
             android:id="@+id/edtDetailTodo"
             android:background="@drawable/custom_edittext_bg"
-            android:drawableLeft="@drawable/ic_onetodo_edit"
+            android:drawableStart="@drawable/ic_onetodo_edit"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:autofillHints="@string/Username"
+            android:importantForAutofill="no"
             android:inputType="text"
             tools:layout_editor_absoluteX="145dp"
             tools:layout_editor_absoluteY="83dp" />
@@ -88,7 +91,9 @@
         <EditText
             android:id="@+id/edtUserShare"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:importantForAutofill="no"/>
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
