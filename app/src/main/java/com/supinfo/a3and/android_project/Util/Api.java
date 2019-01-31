@@ -188,7 +188,6 @@ public class Api extends AppCompatActivity {
                             stringBuilder.append(line).append("\n");
                         }
                         bufferedReader.close();
-                        Log.e("string", stringBuilder.toString());
                         if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
                             isConnected(false);
                         }
@@ -253,7 +252,6 @@ public class Api extends AppCompatActivity {
                             stringBuilder.append(line).append("\n");
                         }
                         bufferedReader.close();
-                        Log.e("string", stringBuilder.toString());
                         if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
                             isConnected(false);
                         }
