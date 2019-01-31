@@ -1,6 +1,7 @@
 package com.supinfo.a3and.android_project.Model;
 
 import android.content.ContentValues;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import com.supinfo.a3and.android_project.R;
