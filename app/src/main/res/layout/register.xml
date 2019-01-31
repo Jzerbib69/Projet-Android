@@ -21,60 +21,60 @@
             <EditText
                 android:id="@+id/edtUsernameRegister"
                 android:background="@drawable/custom_edittext_bg"
-                android:drawableLeft="@drawable/ic_username"
+                android:drawableStart="@drawable/ic_username"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
-                android:autofillHints="@string/Username"
+                android:importantForAutofill="no"
                 android:hint="@string/Username"
                 android:inputType="text" />
 
             <EditText
                 android:id="@+id/edtFirstName"
                 android:background="@drawable/custom_edittext_bg"
-                android:drawableLeft="@drawable/ic_username"
+                android:drawableStart="@drawable/ic_username"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center"
-                android:autofillHints="@string/FirstName"
+                android:importantForAutofill="no"
                 android:hint="@string/FirstName"
                 android:inputType="text" />
 
             <EditText
                 android:id="@+id/edtLastName"
                 android:background="@drawable/custom_edittext_bg"
-                android:drawableLeft="@drawable/ic_username"
+                android:drawableStart="@drawable/ic_username"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center"
-                android:autofillHints="@string/LastName"
+                android:importantForAutofill="no"
                 android:hint="@string/LastName"
                 android:inputType="text" />
 
             <EditText
                 android:id="@+id/edtEmail"
                 android:background="@drawable/custom_edittext_bg"
-                android:drawableLeft="@drawable/ic_email"
+                android:drawableStart="@drawable/ic_email"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center"
-                android:autofillHints="@string/Email"
+                android:importantForAutofill="no"
                 android:hint="@string/Email"
                 android:inputType="textEmailAddress" />
 
             <EditText
                 android:id="@+id/edtPasswordRegister"
                 android:background="@drawable/custom_edittext_bg"
-                android:drawableLeft="@drawable/ic_password"
+                android:drawableStart="@drawable/ic_password"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center"
-                android:autofillHints="@string/Password"
+                android:importantForAutofill="no"
                 android:hint="@string/Password"
                 android:inputType="textPassword" />
 

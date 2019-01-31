@@ -4,6 +4,7 @@ import com.supinfo.a3and.android_project.Util.Api;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -49,9 +50,15 @@ public class DisplayAllTodoList extends AppCompatActivity {
                 password = intent.getStringExtra("password");
             }
             todoListView = findViewById(R.id.lstTodoList);
-
             api.listTodoList(username, password);
-
+            new android.os.Handler().postDelayed(
+                    new Runnable() {
+                        public void run() {
+                            Log.e("test", "30 secondes");
+                            api.listTodoList(username, password);
+                        }
+                    },
+                    30000);
             try {
                 Thread.sleep(800);
             } catch (InterruptedException e) {
