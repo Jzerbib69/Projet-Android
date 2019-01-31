@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myDb = new DatabaseHelper(this);
-        Boolean isConnexion;
 
         final Button buttonRegister = findViewById(R.id.btnRegister);
         final Button buttonLogin = findViewById(R.id.btnLogin);
