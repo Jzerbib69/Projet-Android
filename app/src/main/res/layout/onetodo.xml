@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background_blue1">
 
     <TextView
         android:id="@+id/txtIsShared"
@@ -39,7 +40,9 @@
 
         <EditText
             android:id="@+id/edtDetailTodo"
-            android:layout_width="match_parent"
+            android:background="@drawable/custom_edittext_bg"
+            android:drawableLeft="@drawable/ic_onetodo_edit"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
