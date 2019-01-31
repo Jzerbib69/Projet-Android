@@ -17,9 +17,9 @@ public class Api extends AppCompatActivity {
 
     boolean state = false;
     ArrayList<String> todo = new ArrayList<>();
+    String detailAlone;
+    ArrayList<String> otherDetail = new ArrayList<>();
     JSONObject jsonObject;
-
-    StringBuilder soloTodo = new StringBuilder();
 
     public void register(final String username, final String password, final String firstName, final String lastName, final String email, Context context){
         //this.contextReference = new WeakReference<Context>(context);
@@ -147,13 +147,12 @@ public class Api extends AppCompatActivity {
                             stringBuilder.append(line).append("\n");
                         }
                         bufferedReader.close();
-                        todo.add(stringBuilder.toString());
                         JSONArray jsonArray = new JSONArray(stringBuilder.toString());
                         for (int i = 0; i < jsonArray.length(); i++) {
                             jsonObject = jsonArray.getJSONObject(i);
-                            Log.e("string", jsonObject.getString("id"));
-                            Log.e("string", jsonObject.getString("userinvited"));
-                            Log.e("string", jsonObject.getString("todo"));
+                            todo.add(jsonObject.getString("todo"));
+                            otherDetail.add(jsonObject.getString("id"));
+                            otherDetail.add(jsonObject.getString("userinvited"));
                         }
                         if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
                             Log.e("Erreur ", "Une erreur est survenue sur la TodoList");
@@ -161,7 +160,6 @@ public class Api extends AppCompatActivity {
                         else{
                             isConnected(true);
                         }
-
                     } finally {
                         urlConnection.disconnect();
                     }
@@ -208,19 +206,13 @@ public class Api extends AppCompatActivity {
         thread.start();
     }
 
-    public void read(final String username, final String password, final int idList){
+    public void read(final String username, final String password, final String id){
         Thread thread = new Thread(new Runnable() {
 
             @Override
             public void run() {
-                Log.e("string", "test");
                 try {
-                    JSONArray jsonArray = new JSONArray(todo.toString());
-                    Log.e("string", "Number of entries " + jsonArray.length());
-
-                    JSONObject jsonObject = jsonArray.getJSONObject(idList);
-                    String id = jsonObject.getString("id");
-                    URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=read&username=" + username + "&password=" + password+ "id=" +id);
+                    URL url = new URL("http://supinfo.steve-colinet.fr/suptodo?action=list&username=" + username + "&password=" + password);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     try {
                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -230,8 +222,14 @@ public class Api extends AppCompatActivity {
                             stringBuilder.append(line).append("\n");
                         }
                         bufferedReader.close();
-                        Log.e("string", stringBuilder.toString());
-                        soloTodo = stringBuilder;
+                        JSONObject jsonObject = new JSONObject(stringBuilder.toString());
+                        detailAlone = jsonObject.getString("todo");
+                        if((""+stringBuilder.charAt(11)+stringBuilder.charAt(12)+stringBuilder.charAt(13)+stringBuilder.charAt(14)+stringBuilder.charAt(15)).equals("false")){
+                            Log.e("Erreur ", "Une erreur est survenue sur la TodoList");
+                        }
+                        else{
+                            isConnected(true);
+                        }
                     } finally {
                         urlConnection.disconnect();
                     }
@@ -290,23 +288,17 @@ public class Api extends AppCompatActivity {
     public boolean isConnected(){
         return this.state;
     }
+
+    public void istodoAlone(Boolean reponse, String leDetail){
+        if(reponse){
+            this.detailAlone="good";
+        }
+        else{
+            this.detailAlone="test";
+        }
+    }
+
+    public String returnDetailTodo(){
+        return this.detailAlone;
+    }
 }
-
-
-//test for nathan
-//StringBuilder stringBuilder2 = new StringBuilder();
-  /*for(int i=0; i<stringBuilder.length();i++){
-                                if(stringBuilder.charAt(i) == 't' && stringBuilder.charAt(i+1) == 'o' && stringBuilder.charAt(i+2) == 'd' && stringBuilder.charAt(i+3) == 'o'){
-                                    for(int j = i+7; j<stringBuilder.length();j++){
-                                        if(stringBuilder.charAt(j) == '"'){
-                                            Log.e("string",stringBuilder2.toString());
-                                            todo.add('"');
-                                            todo.add(stringBuilder2.toString());
-                                            todo.add("\", ");
-                                        }
-                                        stringBuilder2.append(stringBuilder.charAt(j));
-                                    }
-                                    stringBuilder2.deleteCharAt(stringBuilder2.length());
-                                    stringBuilder2.deleteCharAt(stringBuilder2.length()-1);
-                                }
-                            }*/

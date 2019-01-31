@@ -5,14 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class DisplayOneTodo extends AppCompatActivity {
 
-    String usernameLast,passwordLast;
-    Integer id;
+    String usernameLast,passwordLast,userFriend;
+    String id;
     Api api = new Api();
 
     @Override
@@ -57,12 +59,20 @@ public class DisplayOneTodo extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null) {
-            if (intent.hasExtra("username") && intent.hasExtra("password") && intent.hasExtra("id")) {
+            if (intent.hasExtra("username") && intent.hasExtra("password") && intent.hasExtra("id") && intent.hasExtra("userinvited")) {
                 usernameLast = intent.getStringExtra("username");
                 passwordLast = intent.getStringExtra("password");
-                id = intent.getIntExtra("id", 0);
+                id = intent.getStringExtra("id");
+                userFriend = intent.getStringExtra("userinvited");
+                Log.e("username", usernameLast);
+                Log.e("password", passwordLast);
+                Log.e("id", id);
+                Log.e("userFriend", userFriend);
             }
             api.read(usernameLast, passwordLast, id);
+            EditText edtTodoAlone = findViewById(R.id.edtDetailTodo);
+            Log.e("test", api.detailAlone);
+            //edtTodoAlone.setText(api.todoAlone);
         }
 
         final Button buttonUpdate = findViewById(R.id.btnModify);
