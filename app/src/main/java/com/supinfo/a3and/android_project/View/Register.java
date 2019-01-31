@@ -19,7 +19,7 @@ public class Register extends AppCompatActivity{
     EditText usernameText, firstNameText, lastNameText,emailText, passwordText;
     String dataUsername, dataFirstName, dataLastName, dataEmail, dataPassword;
     Api api = new Api();
-    RegisterBDD register = new RegisterBDD();
+    //RegisterBDD register = new RegisterBDD();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
