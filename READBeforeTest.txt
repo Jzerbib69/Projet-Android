@@ -1,0 +1,9 @@
+Bienvenue sur myTodoList :
+- Nous avons utilisé l'API fournit dans le sujet, nous avons également rajouté une BDD mais nous ne l'avons pas implémenter avec les différentes classes et boutons
+- Nous n'avons pas utilisé l'asynchrone, donc l'appli peut prendre du temps pour le chargement des données. Si l'application bloque revenez sur la page dacceuil en fermant 
+l'application et relancez ceci devrait corrigé(Possibilité de le faire plusieurs fois)
+- User test exemple : juju, 4569 ; user1, 123...
+- Nous n'avons pas trouvé de nouveau bugs au niveaux des boutons ou fonctions utilisés lors du dernier test
+
+Merci d'utiliser notre application 
+Cordialement !
