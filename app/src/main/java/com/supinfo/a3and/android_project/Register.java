@@ -1,6 +1,5 @@
 package com.supinfo.a3and.android_project;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +10,7 @@ import android.widget.Toast;
 public class Register extends AppCompatActivity{
     EditText usernameText, firstNameText, lastNameText,emailText, passwordText;
     String dataUsername, dataFirstName, dataLastName, dataEmail, dataPassword;
+    Api api = new Api();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,17 +62,12 @@ public class Register extends AppCompatActivity{
             Toast.makeText(this, "Vous devez renseigner tous les champs !", Toast.LENGTH_SHORT).show();
         }
         else {
-            Api api = new Api();
             api.register(dataUsername, dataPassword, dataFirstName, dataLastName, dataEmail, this);
             Intent intent = new Intent(this, DisplayAllTodoList.class);
             intent.putExtra("username", dataUsername);
             intent.putExtra("password", dataPassword);
             startActivity(intent);
+            Toast.makeText(this, "Vous êtes maintenant connecté", Toast.LENGTH_SHORT).show();
         }
     }
-
-    public Context getContext(){
-        return this;
-    }
-
 }

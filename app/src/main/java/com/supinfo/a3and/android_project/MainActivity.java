@@ -3,16 +3,17 @@ package com.supinfo.a3and.android_project;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.supinfo.a3and.android_project.Database.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
     EditText usernameLogin, passwordLogin;
     String dataUsernameLogin, dataPasswordLogin;
+    Integer reponse;
     DatabaseHelper myDb;
 
     @Override
@@ -34,19 +35,23 @@ public class MainActivity extends AppCompatActivity {
                 initialiseDataLogin();
                 Api api = new Api();
                 api.login(dataUsernameLogin, dataPasswordLogin);
-                //Register reg = new Register();
-                //if (api.isConnected()){
-                    //Toast.makeText(reg.getContext(), "Vous êtes maintenant connecté", Toast.LENGTH_SHORT).show();
-                    Log.e("Bravo", "Vous êtes connecté");
+                try {
+                    Thread.sleep(800);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (String.valueOf(api.isConnected()).equals("true")){
+                    reponse = 1;
+                    showToast(reponse);
                     Intent intent = new Intent(v.getContext(), DisplayAllTodoList.class);
                     intent.putExtra("username", dataUsernameLogin);
                     intent.putExtra("password", dataPasswordLogin);
                     startActivity(intent);
-                /*}
+                }
                 else {
-                    //Toast.makeText(reg.getContext(), "Erreur de connexion, vérifiez vos identifiants", Toast.LENGTH_SHORT).show();
-                    Log.e("Erreur", "Erreur de connexion, vérifiez vos identifiants");
-                }*/
+                    reponse = 2;
+                    showToast(reponse);
+                }
             }
         });
     }
@@ -63,5 +68,14 @@ public class MainActivity extends AppCompatActivity {
     public void initialiseDataLogin(){
         dataUsernameLogin = usernameLogin.getText().toString();
         dataPasswordLogin = passwordLogin.getText().toString();
+    }
+
+    public void showToast(Integer reponse){
+        if (reponse == 1){
+            Toast.makeText(this, "Vous êtes maintenant connecté", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(this, "Echec de la connexion, veuillez vérifier vos Identifiants.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
