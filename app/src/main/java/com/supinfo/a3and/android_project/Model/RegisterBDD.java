@@ -1,5 +1,6 @@
-package com.supinfo.a3and.android_project.Database;
+package com.supinfo.a3and.android_project.Model;
 
+<<<<<<< HEAD:app/src/main/java/com/supinfo/a3and/android_project/Database/RegisterBDD.java
 import android.content.ContentValues;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,11 @@ import android.widget.EditText;
 import com.supinfo.a3and.android_project.R;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+=======
+import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
+import com.supinfo.a3and.android_project.R;
+>>>>>>> master:app/src/main/java/com/supinfo/a3and/android_project/Model/RegisterBDD.java
 
 
 public class RegisterBDD extends AppCompatActivity {
@@ -34,6 +40,7 @@ public class RegisterBDD extends AppCompatActivity {
 
     public void RegisterBDD(){
         getData();
+<<<<<<< HEAD:app/src/main/java/com/supinfo/a3and/android_project/Database/RegisterBDD.java
         ContentValues contentValues = new ContentValues();
         SQLiteDatabase db = this.getWritableDatabase();
         contentValues.put(dbHelper.COLUMN_USERNAME, dataUsername);
@@ -43,6 +50,9 @@ public class RegisterBDD extends AppCompatActivity {
         contentValues.put(dbHelper.COLUMN_PASSWORD, dataPassword);
         db.insert(dbHelper.TABLE_USERS, null, contentValues);
 
+=======
+        initialiseData();
+>>>>>>> master:app/src/main/java/com/supinfo/a3and/android_project/Model/RegisterBDD.java
     }
 
 
